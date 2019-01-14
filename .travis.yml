@@ -15,9 +15,7 @@ script:
   - mvn clean install
 
 after_success:
-  - java -jar codacy-coverage-reporter-4.0.3-assembly.jar report -l Java -r target/jacoco/it/jacoco.xml --partial
-  - java -jar codacy-coverage-reporter-4.0.3-assembly.jar report -l Java -r target/jacoco/ut/jacoco.xml --partial
-  - java -jar codacy-coverage-reporter-4.0.3-assembly.jar final
+  - java -jar codacy-coverage-reporter-4.0.3-assembly.jar report -l Java -r target/jacoco/jacoco.xml
 
 jdk:
   - oraclejdk8
