@@ -1,4 +1,4 @@
-package hello.micronaut;
+package com.ssubijana.hellomicronaut;
 
 import io.micronaut.context.ApplicationContext;
 import io.micronaut.http.HttpStatus;
@@ -6,7 +6,6 @@ import io.micronaut.http.client.RxHttpClient;
 import io.micronaut.runtime.server.EmbeddedServer;
 import org.junit.Ignore;
 import org.junit.Test;
-
 
 import static org.junit.Assert.assertEquals;
 

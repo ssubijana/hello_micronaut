@@ -1,4 +1,4 @@
-package hello.micronaut;
+package com.ssubijana.hellomicronaut;
 
 import io.micronaut.http.MediaType;
 import io.micronaut.http.annotation.Controller;

@@ -1,4 +1,4 @@
-package hello.micronaut;
+package com.ssubijana.hellomicronaut;
 
 import io.micronaut.context.ApplicationContext;
 import io.micronaut.http.HttpRequest;
