@@ -16,6 +16,15 @@
 
     <jacoco.itreportpath>${project.build.directory}/jacoco</jacoco.itreportpath>
     <jacoco.itreportfile>${jacoco.itreportpath}/jacoco-it.exec</jacoco.itreportfile>
+
+    <sonar.host.url>http://${sonar.host}:9000</sonar.host.url>
+    <sonar.sources>src/main</sonar.sources>
+    <sonar.tests>src/test</sonar.tests>
+    <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
+    <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+    <sonar.jacoco.reportPath>${jacoco.utreportpath}/jacoco.exec</sonar.jacoco.reportPath>
+    <sonar.jacoco.itReportPath>${jacoco.itreportpath}/jacoco-it.exec</sonar.jacoco.itReportPath>
+    <sonar.language>java</sonar.language>
   </properties>
   <repositories>
     <repository>
@@ -260,4 +269,35 @@
       </plugins>
     </pluginManagement>
   </build>
+  <profiles>
+    <profile>
+      <id>dev</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <properties>
+        <nexus.host>localhost</nexus.host>
+        <sonar.host>localhost</sonar.host>
+      </properties>
+    </profile>
+    <profile>
+      <id>jenkins</id>
+      <properties>
+        <nexus.host>cursosboot-nexus</nexus.host>
+        <sonar.host>cursosboot-sonarqube</sonar.host>
+      </properties>
+    </profile>
+  </profiles>
+  <distributionManagement>
+    <repository>
+      <id>releases</id>
+      <name>releases</name>
+      <url>http://${nexus.host}:8081/nexus/content/repositories/releases</url>
+    </repository>
+    <snapshotRepository>
+      <id>snapshots</id>
+      <name>snapshots</name>
+      <url>http://${nexus.host}:8081/nexus/content/repositories/snapshots</url>
+    </snapshotRepository>
+  </distributionManagement>
 </project>

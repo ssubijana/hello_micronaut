@@ -175,6 +175,22 @@
         </plugin>
     </plugins>
   </build>
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <sonar.host>localhost</sonar.host>
+                <nexus.host>localhost</nexus.host>
+            </properties>
+        </profile>
+        <profile>
+            <id>jenkins</id>
+            <properties>
+                <sonar.host>cursosboot-sonarqube</sonar.host>
+                <nexus.host>cursosboot-nexus</nexus.host>
+            </properties>
+        </profile>
+    </profiles>
   <repositories>
     <repository>
       <id>jcenter.bintray.com</id>
@@ -218,17 +234,37 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
+    <distributionManagement>
+        <repository>
+            <id>releases</id>
+            <name>releases</name>
+            <url>http://${nexus.host}:8081/nexus/content/repositories/releases</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>snapshots</name>
+            <url>http://${nexus.host}:8081/nexus/content/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
   <properties>
-      <jacoco.outputDir>${project.build.directory}</jacoco.outputDir>
-      <jacoco.utreportpath>${project.build.directory}/jacoco</jacoco.utreportpath>
-      <jacoco.utreportfile>${jacoco.utreportpath}/jacoco.exec</jacoco.utreportfile>
-      <jacoco.itreportpath>${project.build.directory}/jacoco</jacoco.itreportpath>
       <micronaut.version>1.0.2</micronaut.version>
-      <jacoco.itreportfile>${jacoco.itreportpath}/jacoco-it.exec</jacoco.itreportfile>
-      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+      <sonar.tests>src/test</sonar.tests>
+      <sonar.sources>src/main</sonar.sources>
       <exec.mainClass>com.ssubijana.hellomicronaut.Application</exec.mainClass>
+      <jacoco.utreportpath>${project.build.directory}/jacoco</jacoco.utreportpath>
+      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+      <sonar.host.url>http://${sonar.host}:9000</sonar.host.url>
+      <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
+      <jacoco.utreportfile>${jacoco.utreportpath}/jacoco.exec</jacoco.utreportfile>
+      <sonar.language>java</sonar.language>
+      <sonar.jacoco.itReportPath>${jacoco.itreportpath}/jacoco-it.exec</sonar.jacoco.itReportPath>
+      <jacoco.outputDir>${project.build.directory}</jacoco.outputDir>
+      <jacoco.itreportpath>${project.build.directory}/jacoco</jacoco.itreportpath>
+      <sonar.jacoco.reportPath>${jacoco.utreportpath}/jacoco.exec</sonar.jacoco.reportPath>
+      <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
       <jacoco.version>0.7.6.201602180812</jacoco.version>
     <jdk.version>1.8</jdk.version>
+      <jacoco.itreportfile>${jacoco.itreportpath}/jacoco-it.exec</jacoco.itreportfile>
   </properties>
 </project>
 
