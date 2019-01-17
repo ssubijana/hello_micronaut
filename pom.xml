@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.ssubijana</groupId>
   <artifactId>hello-micronaut</artifactId>
-  <version>0.1</version>
+  <version>1.0.0</version>
   <properties>
     <micronaut.version>1.0.2</micronaut.version>
     <jdk.version>1.8</jdk.version>
